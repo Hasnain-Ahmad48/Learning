@@ -1,7 +1,10 @@
 import { useState } from 'react'
+import './App.css'
 import reactLogo from './assets/react.svg'
 import viteLogo from '/vite.svg'
 import './App.css'
+import Loginform from './components/Loginform';
+import Table from './components/Table';
 
 function test(){
   const [name,setName]=useState();
@@ -9,20 +12,6 @@ function test(){
   const [incval,setIncVAl]=useState(0);
   const [decval,setDecVal]=useState(0);
   const [nname, ssetName] = useState("");
-  // my code
-  const [enterName,showName]=useState();
-  const [enterEmail,showEmail]=useState();
-  const [enterPassword,showPassword]=useState();
-
-  const handleSubmit = (event) => {
-    event.preventDefault();
-    alert(`The name you entered was: ${nname}`)
-  }
-
-  const showContent =(term)=>{
-term.preventDefault();
-console.log(`Your name is: ${enterName} <br>, your email is: ${enterEmail},your password is: ${enterPassword}`)
-  }
 
   return(
     <>
@@ -46,40 +35,9 @@ console.log(`Your name is: ${enterName} <br>, your email is: ${enterEmail},your 
     <h1 >Decreament</h1>
     <button class=" m-5 bg-pink-500 text-blue-500" onClick={()=>setDecVal(decval-1)} >click to decrease: {decval}</button>
 
-    <form onSubmit={handleSubmit}>
-      <label>Enter your name:
-        <input 
-          type="text" 
-          value={nname}
-          onChange={(e) => ssetName(e.target.value)}
-        />
-      </label>
-      <input type="submit" />
-    </form>
-    {/* my code */}
-
-<form onSubmit={showContent}>
-  <label htmlFor="">Enter Name:
-    <input class="outline-1 outline-whit m-2" type="text" value={enterName}
-    onChange={(e)=>showName(e.target.value)} />
-  </label>
-  <br />
-  <label htmlFor="">Enter Email:
-    <input class="outline-1 outline-white" type="email" 
-    value={enterEmail}
-    onChange={(e)=>showEmail(e.target.value)} />
-  </label>
-  <br />
-  <label htmlFor="">Enter Password:
-    <input class="outline-1 outline-white m-3" type="password"
-    value={enterPassword}
-    onChange={(e)=>showPassword(e.target.value)} />
-  </label>
-  <br />
-  <input class="bg-sky-500 hover:bg-sky-700" type="submit" />
-</form>
-
-
+    <Loginform />
+    <Table />
+   
     </>
   )
 }
